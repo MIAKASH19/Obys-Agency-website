@@ -1,8 +1,20 @@
+@font-face {
+    font-family: Plain;
+    src: url(/assets/plain-regular-webfont.ttf);
+}
+@font-face {
+    font-family: silk-serif;
+    src: url(/assets/silkserif-regularitalic-webfont.ttf);
+}
+@font-face {
+    font-family: DM;
+    src: url(/assets/DM-Sans-regular.ttf);
+}
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Plus Jakarta Sans; 
+    font-family: DM;
     color: whitesmoke;
 }
 html, body {
@@ -12,15 +24,82 @@ html, body {
 
 main {
     position: relative;
-    background-color: #111;
+    background-color: #111111;
+    display: none;
 }
-.loader {
+#loader {
     position: fixed;
     z-index: 99;
     width: 100%;
     height: 100%;
-    background: #0b0b0b;
-    padding: 25vh 10vw;
+    background: #070707;
+    padding: 15vh 5vw;
+}
+.line{
+    /* background: red; */
+    overflow: hidden;
+    display: flex;
+    align-items: start;
+    justify-content: flex-start;
+    gap: 3vw;
+}
+.line1-part1{
+    display: flex;
+    gap: 1vw;
+}
+.line1-part1 h5, .line1-part1 h6{
+    font-size: 3vw;
+    font-weight: 100;
+    font-family: silk-serif;
+}
+.line1-part1 h5{
+    width: 5.3vw;
+    text-align: right;
+}
+.line h1, .line h2{
+    font-size: 7.2vw;
+    font-weight: 500;
+    text-transform: uppercase;
+    line-height: 1;
+    font-family: Plain;
+}
+.line h2{
+    animation: beatanim infinite 2s 2s ;
+}
+
+@keyframes beatanim {
+    0%{
+        font-family: Plain;
+        -webkit-text-stroke: 1px #fff;
+        color: #fff;
+        opacity: 1;
+    }
+    48%{
+        font-family: Plain;
+        -webkit-text-stroke: 1px #fff;
+        color: white;
+        opacity: 0;
+    }
+    50%{
+        font-family: silk-serif;
+        -webkit-text-stroke: 1px #fff;
+        color: transparent;
+        opacity: 1;
+    }
+    100%{
+        font-family: silk-serif;
+        -webkit-text-stroke: 1px #fff;
+        color: transparent;
+        opacity: 0;
+    }
+}
+.loader-text {
+    margin-top: 10vh;
+    margin-left: 22vw;
+}
+.loader-text h4{
+    font-weight: 500;
+    line-height: 1.1;
 }
 #sec1{
     width: 100vw;
