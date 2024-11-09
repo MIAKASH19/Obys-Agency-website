@@ -16,7 +16,7 @@ tl.from(".loader-text", {
 }, "anim")
 
 tl.from(".line1-part1", {
-  opacity: 0,
+  opacity: 0,                  
   onStart: function () {
     let line1h5 = document.querySelector(".line1-part1 h5");
     let counter = 0;
@@ -51,3 +51,5 @@ tl.to("#loader", {
 });
 
 // Loader Animation End
+
+
