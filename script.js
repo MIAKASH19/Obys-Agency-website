@@ -34,7 +34,7 @@ function loaderAnimation() {
           if (counter >= 100) {
             clearInterval(intervalId);
           }
-        }, 25);
+        }, 35);
       },
     },
     "anim"
@@ -43,7 +43,7 @@ function loaderAnimation() {
   tl.to(".line , .loader-text", {
     opacity: 0,
     duration: 1,
-    delay: 2.3,
+    delay: 3.5,
     onComplete: function () {
       document.querySelector("main").style.display = "block";
     },
@@ -52,11 +52,49 @@ function loaderAnimation() {
   tl.to("#loader", {
     y: "-100%",
     ease: "power3.out",
-    duration: 0.5,
+    duration: 0.8,
     onComplete: function () {
       document.querySelector("#loader").style.display = "none";
     },
   });
+  tl.from("nav", {
+    opacity: 0,
+    duration: 1,
+  });
+  tl.from("#hero1 h1, #hero2 h1, #hero3 h2, #hero4 h1", {
+    y: 100,
+    stagger: 0.3,
+  });
+  tl.from("#hero3 h3", {
+    opacity: 0,
+  });
 }
-loaderAnimation()
+loaderAnimation();
 // Loader Animation End
+
+function cursorAnimation() {
+  document.addEventListener("mousemove", function (dets) {
+    gsap.to(".cursor", {
+      top: dets.y,
+      left: dets.x,
+    });
+  });
+  Shery.makeMagnet(".nav-links a");
+  Shery.makeMagnet(".nav-icon svg", {
+    duration: 1,
+  });
+  Shery.makeMagnet(".obys-logo svg", {
+    duration: 1,
+  });
+}
+
+cursorAnimation();
+
+// Shery.textAnimate(".hero h1" , {
+//   style: 1,
+//   y: 50,
+//   delay: 0.1,
+//   duration: 1,
+//   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+//   multiplier: 0.1,
+// });
