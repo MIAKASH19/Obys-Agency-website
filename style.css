@@ -10,6 +10,10 @@
     font-family: DM;
     src: url(/assets/DM-Sans-regular.ttf);
 }
+@font-face {
+    font-family: Manrope;
+    src: url(/assets/Manrope-VariableFont_wght.ttf)
+}
 * {
     margin: 0;
     padding: 0;
@@ -119,7 +123,7 @@ main {
 
 /* Loader styles */
 
-#sec1{
+#section1{
     width: 100vw;
     min-height: 100vh;
     background-color: #151515;
@@ -172,7 +176,7 @@ nav{
     text-align: left;
     margin-left: 27%;
     letter-spacing: -2px;
-    /* overflow-y: hidden; */
+    overflow-y: hidden;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -258,4 +262,126 @@ nav{
 #hero3 h2:hover:first-child::after{
     color: white;
     -webkit-text-stroke: 0px white;
+}
+
+/* Section1 ended */
+
+#section2{
+    width: 100%;
+    height: 100vh;
+    background-color: #151515;
+    padding-top: 20vh;
+}
+
+.video-container{
+    width: 70vw;
+    height: 70vh;
+    position: relative;
+    left: 29%;
+    background-image: url(https://obys.agency/wp-content/uploads/2022/11/Showreel-2022-preview-1.jpg);
+}
+.secnd-crsr{
+    width: 12vw;
+    height: 12vw;
+    border-radius: 50%;
+    background: #FFA63D;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: -15%;
+    left: 75%;
+    z-index: 99;
+}
+.secnd-crsr i{
+    font-size: 2vw;
+}
+.video-container img{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 10;
+    object-fit: cover;
+    position: absolute;
+}
+.video-container video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Section2 ended */
+
+#section3{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #151515;
+    position: relative;
+}
+#section4{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #151515;
+    position: relative;
+    padding: 5vh 5vw;
+}
+.section4-content{
+    width: 72vw;
+    margin-left: 28%;
+}
+.section4-content h1{
+    font-size: 7vw;
+    text-transform: uppercase;
+}
+.section4-content .underline{
+    width: 100%;
+    height: 2px;
+    background: white;
+    margin: 5vh 0;
+}
+.section4-content>p{
+    font-size: 2.4vw;
+    font-family: Manrope;
+    font-weight: 400;
+    width: 36%;
+    line-height: 1.1;
+    /* letter-spacing: -1px; */
+    margin-bottom: 5vmax;
+}
+.section4-flex{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+}
+.section4-flex img{
+    width: 50%;
+    height: 100%;
+    margin-right: 2.5vw;
+}
+.section4-flex p{
+    font-size: 1.2vw;
+    width: 25%;
+}
+.section4-bluediv{
+    width: 45vw;
+    min-height: 60vh;
+    background: #3F7DF4;
+    padding: 4vw 3vw;
+    position: relative;
+    top: -25vh;
+    left: 20vw;
+}
+.bluediv-elem{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(230, 230, 230);
+    padding: 2vw 0;
+    gap: 2vw;
+}
+.bluediv-elem h4{
+    font-size: 1.7vw;
+    font-weight: normal;
+}
+.bluediv-elem p{
+    width: 60%;
 }
