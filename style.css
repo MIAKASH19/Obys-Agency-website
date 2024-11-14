@@ -334,7 +334,7 @@ nav{
 }
 .section4-content .underline{
     width: 100%;
-    height: 2px;
+    height: 1px;
     background: white;
     margin: 5vh 0;
 }
@@ -346,6 +346,10 @@ nav{
     line-height: 1.1;
     /* letter-spacing: -1px; */
     margin-bottom: 5vmax;
+}
+.section4-content h5{
+    font-weight: normal;
+    font-size: 1vw;
 }
 .section4-flex{
     display: flex;
@@ -384,4 +388,12 @@ nav{
 }
 .bluediv-elem p{
     width: 60%;
+}
+
+/* Section4 ended */
+
+.section5{
+    width: 100%;
+    min-height: 100vh;
+    background: #151515;
 }
