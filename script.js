@@ -60,7 +60,7 @@ function loaderAnimation() {
   tl.from("nav", {
     opacity: 0,
     duration: 1,
-  });
+  },"a");
   tl.from("#hero1 h1, #hero2 h1, #hero3 h2, #hero4 h1", {
     y: 100,
     stagger: 0.3,
@@ -68,9 +68,15 @@ function loaderAnimation() {
   tl.from("#hero3 h3", {
     opacity: 0,
   });
+  tl.to(".hero-text",{
+    "--opacity": 1,
+    delay: 1,
+  }, "a")
 }
 loaderAnimation();
 // Loader Animation End
+
+//Cursor Animation Start
 
 function cursorAnimation() {
   document.addEventListener("mousemove", function (dets) {
@@ -90,11 +96,5 @@ function cursorAnimation() {
 
 cursorAnimation();
 
-// Shery.textAnimate(".hero h1" , {
-//   style: 1,
-//   y: 50,
-//   delay: 0.1,
-//   duration: 1,
-//   ease: "cubic-bezier(0.23, 1, 0.320, 1)",
-//   multiplier: 0.1,
-// });
+//Cursor Animation End
+

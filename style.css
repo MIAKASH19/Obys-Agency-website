@@ -33,17 +33,18 @@ main {
     /* display: none; */ 
 }
 .cursor{
-    width: 3vw;
-    height: 3vw;
+    width: 3vmax;
+    height: 3vmax;
     /* background-color: red; */
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 99;
+    z-index: 100;
     border-radius: 50%;
     border: 1px solid rgb(212, 212, 212);
     mix-blend-mode: difference;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 #loader {
     position: fixed;
@@ -123,24 +124,22 @@ main {
 
 /* Loader styles */
 
-#section1{
-    width: 100vw;
-    min-height: 100vh;
-    background-color: #151515;
-    position: relative;
-}
 
 nav{
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1vw 2vw;
-    /* background: rgba(37, 37, 37, 0.507); */
-    z-index: 9;
+    background-color: #1515154b;
+    z-index: 99;
     width: 100%;
+    height: 20vh;
+    backdrop-filter: blur(7px);
 }
 .nav-icon {
-    /* background: red; */
     width: 3vw;
     height: 3vw;
     display: flex;
@@ -170,11 +169,39 @@ nav{
 .nav-links a{
     text-decoration: none;
 }
+/* Section1 Start */
+
+#section1{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #151515;
+    position: relative;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    padding-bottom: 5vh;
+}
+.hero-text{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: start;
+    margin-left: 7%;
+}
+.hero-text::before{
+    content: "01";
+    line-height: 1;
+    font-size: 3.3vw;
+    font-family: silk-serif;
+    position: absolute;
+    left: -12%;
+    top: 2.8%;
+    opacity: var(--opacity, 0);
+}
 .hero{
-    /* background: red; */
-    width: fit-content;
+    width: 100%;
     text-align: left;
-    margin-left: 27%;
     letter-spacing: -2px;
     overflow-y: hidden;
     display: flex;
@@ -182,30 +209,7 @@ nav{
     justify-content: start;
     position: relative;
 }
-/* #hero1::before{
-    content: "01";
-    line-height: 1;
-    font-size: 4vw;
-    font-family: silk-serif;
-    background: red; 
-    position: absolute;
-    right: 105%;
-    top: 10%;
-} */
-.hero h4{
-    /* background: red; */
-    font-family: silk-serif;
-    font-size: 3.5vw;
-    line-height: 1;
-    font-weight: 500;
-    text-transform: uppercase;
-    position: absolute;
-    left: -15%;
-    top: 10%;
-}
-.hero:nth-child(2){
-    margin-top: 15.5vh;
-}
+
 .hero h1, .hero h3{
     font-family: Plain;
     font-size: 7.6vw;
@@ -291,7 +295,7 @@ nav{
     justify-content: center;
     top: -15%;
     left: 75%;
-    z-index: 99;
+    z-index: 98;
 }
 .secnd-crsr i{
     font-size: 2vw;
@@ -331,9 +335,19 @@ nav{
 .section4-content h1{
     font-size: 7vw;
     text-transform: uppercase;
+    position: relative;
+}
+.section4-content h1::before{
+    content: "03";
+    font-size: 3.3vw;
+    font-family: silk-serif;
+    font-weight: normal;
+    position: absolute;
+    top: 10%;
+    left: -13%;
 }
 .section4-content .underline{
-    width: 100%;
+    width: 90%;
     height: 1px;
     background: white;
     margin: 5vh 0;
@@ -349,7 +363,7 @@ nav{
 }
 .section4-content h5{
     font-weight: normal;
-    font-size: 1vw;
+    font-size: 3vmax;
 }
 .section4-flex{
     display: flex;
@@ -392,8 +406,129 @@ nav{
 
 /* Section4 ended */
 
+/* Section5 Start */
+
 .section5{
     width: 100%;
     min-height: 100vh;
     background: #151515;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
 }
+.elem{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.elem h1{
+    font-family: Plain;
+    font-size: 8vw;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 100;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 8px 0;
+    animation-name: marque;
+    animation-timing-function: linear;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+.elem span{
+    font-family: silk-serif;
+    -webkit-text-stroke: 1px #fff;
+    color: transparent;
+}
+.elem:nth-child(2n) h1{
+    transform: translateX(calc(-100% - 14px));
+    animation-direction: reverse;
+}
+@keyframes marque {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(calc(-100% - 14px));
+    }
+}
+/* Section5 End */
+
+/* Footer Start */
+
+Footer{
+    width: 100%;
+    min-height: 120vh;
+    background: #151515;
+    position: relative;
+    padding-left: 28vw;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-direction: column;
+}
+.footer h1{
+    font-size: 8vw;
+    text-transform: uppercase;
+    /* background: red; */
+    width: 60vw;
+    color: #fff;
+    position: relative;
+}
+.footer h1::before{
+    content: "04";
+    font-size: 3.3vw;
+    font-family: silk-serif;
+    font-weight: normal;
+    position: absolute;
+    top: 10%;
+    left: -13%;
+}
+.footer>h2{
+    font-weight: normal;
+    font-size: 1.4vw;
+}
+.underline{
+    width: 94%;
+    height: 1px;
+    background: #fff;
+    margin: 3.5vw 0;
+}
+.footer-div{
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-between;
+    padding-right: 10vw;
+    gap: 5vw;
+}
+.box{
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.box h6{
+    font-size: 1.3vw;
+    font-weight: 100;
+    padding-bottom: 1.3vw;
+}
+.box h5{
+    font-size: 1.9vw;
+    font-weight: 100;
+    line-height: 1;
+}
+.box h2{
+    font-size: 1.9vw;
+    font-weight: 100;
+    line-height: 1;
+    text-decoration: underline;
+}
+.box a{
+    text-decoration: none;
+    font-size: 2vw;
+    line-height: 1;
+    font-family: Manrope;
+}
+
+/* Footer End */
