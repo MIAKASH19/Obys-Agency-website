@@ -24,6 +24,7 @@
 html, body {
     width: 100%;
     height: 100%;
+    background-color: #151515;
 }
 
 main {
@@ -238,7 +239,7 @@ nav{
     line-height: 1;
     font-weight: 500;
     text-transform: uppercase;
-    z-index: 99;
+    z-index: 97;
     border-bottom: .6vw solid white;
     padding-bottom: .3vw;
     position: relative;
@@ -314,6 +315,7 @@ nav{
     object-fit: cover;
 }
 /* Section2 ended */
+/* Section3 Start */
 
 #section3{
     width: 100%;
@@ -321,6 +323,32 @@ nav{
     background-color: #151515;
     position: relative;
 }
+#section3 h1{
+    font-size: 7vw;
+    text-transform: uppercase;
+    position: relative;
+    margin-left: 30%;
+}
+#section3 h1::before{
+    content: "02";
+    font-size: 3.3vw;
+    font-family: silk-serif;
+    font-weight: normal;
+    position: absolute;
+    top: 10%;
+    left: -13%;
+}
+#section3 .underline{
+    width: 65%;
+    height: 1px;
+    background: white;
+    margin: 5vh 0;
+    margin-left: 30%;
+}
+
+/* Section3 End */
+
+/* Section4 Start */
 #section4{
     width: 100%;
     min-height: 100vh;

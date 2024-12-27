@@ -9,11 +9,15 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
+    />
     <link rel="stylesheet" href="style.css" class="css" />
     <title>Obys Agency***</title>
   </head>
   <body>
-    <div id="loader">
+    <!-- <div id="loader">
       <div class="line">
         <div class="line1-part1">
           <h5>00</h5>
@@ -32,7 +36,7 @@
       <div class="loader-text">
         <h4>Please wait<br />a few seconds.</h4>
       </div>
-    </div>
+    </div> -->
     <div class="cursor"></div>
     <nav>
       <a href="#" class="nav-icon">
@@ -111,7 +115,7 @@
       </div>
     </nav>
     <main>
-      <section id="section1">
+      <section id="section1" data-scroll data-scroll-speed="-1">
         <div class="hero-text">
           <div class="hero" id="hero1">
             <h1>We Design</h1>
@@ -128,7 +132,7 @@
           </div>
         </div>
       </section>
-      <section id="section2">
+      <section id="section2" data-scroll data-scroll-speed="2">
         <div class="video-container">
           <div class="secnd-crsr">
             <i class="ri-play-large-fill"></i>
@@ -138,15 +142,19 @@
             alt=""
           />
           <video
-            autoplay
+            autopla
             loop
             muted
             src="https://obys.agency/wp-content/uploads/2022/11/Obys-Showreel-2022.mp4"
           ></video>
         </div>
       </section>
-      <section id="section3"></section>
-      <section id="section4">
+      <section id="section3" data-scroll>
+        <h1>Our Projects</h1>
+        <div class="underline"></div>
+        <div class="image-div-container"></div>
+      </section>
+      <section id="section4" data-scroll>
         <div class="section4-content">
           <h1>About Obys</h1>
           <div class="underline"></div>
@@ -198,7 +206,7 @@
           <h5>We work with</h5>
         </div>
       </section>
-      <section class="section5">
+      <section class="section5" data-scroll>
         <div class="elem">
           <h1>Sport - <span>Technology </span>- Fashion -</h1>
           <h1><span>Sport </span>- Technology - Fashion</h1>
@@ -219,7 +227,7 @@
           <h1><span>Hotels </span>- Automotive - Music -</h1>
         </div>
       </section>
-      <footer class="footer">
+      <footer class="footer" data-scroll>
         <h1>Let's Create</h1>
         <div class="underline"></div>
         <div class="footer-div">
@@ -248,8 +256,14 @@
       </footer>
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.155.0/three.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/gh/automat/controlkit.js@master/bin/controlKit.min.js"></script>
     <script
       type="text/javascript"
       src="https://unpkg.com/sheryjs/dist/Shery.js"
