@@ -108,6 +108,7 @@ function loaderAnimation() {
   tl.from("#hero1 h1, #hero2 h1, #hero3 h2, #hero4 h1", {
     y: 100,
     stagger: 0.3,
+    opacity: 0,
   });
   tl.from("#hero3 h3", {
     opacity: 0,
@@ -121,7 +122,7 @@ function loaderAnimation() {
     "a"
   );
 }
-// loaderAnimation();
+loaderAnimation();
 
 //Cursor Animation Start
 function cursorAnimation() {
@@ -138,6 +139,24 @@ function cursorAnimation() {
   });
   Shery.makeMagnet(".obys-logo svg", {
     duration: 1,
+  });
+
+  let hero3 = document.querySelector("#hero3")
+
+  hero3.addEventListener("mousemove", function (event) {
+    const hero3Bound = hero3.getBoundingClientRect();
+    const newX = event.clientX - hero3Bound.left;
+    const newY = event.clientY - hero3Bound.top;
+    gsap.to("#flag", {
+      opacity: 1,
+      left: newX + "px",
+      top: newY + "px",
+    });
+  });
+  hero3.addEventListener("mouseleave", function (event) {
+    gsap.to("#flag", {
+      opacity: 0,
+    });
   });
 
   let vidContainer = document.querySelector(".video-container");
@@ -182,16 +201,20 @@ function cursorAnimation() {
       video.play();
       video.style.opacity = 1;
       img.style.opacity = 0;
-      secCursor.style.opacity = 0;
+      secCursor.innerHTML= `<i class="ri-pause-large-fill"></i>`
+      gsap.to(secCursor, {
+        scale: 0.6
+      })
       videoPlaying = true;
-      console.log("video is playing");
     } else {
       video.pause();
       video.style.opacity = 0;
       img.style.opacity = 1;
-      secCursor.style.opacity = 1;
+      secCursor.innerHTML= `<i class="ri-play-large-fill"></i>`
+      gsap.to(secCursor, {
+        scale: 1
+      })
       videoPlaying = false;
-      console.log("video is paused");
     }
   });
 }
@@ -294,3 +317,7 @@ function magnetAnimation() {
   magneto.addEventListener("mouseleave", removeMagneto);
 }
 magnetAnimation();
+
+
+
+
