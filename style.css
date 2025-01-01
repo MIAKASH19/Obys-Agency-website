@@ -149,6 +149,16 @@ nav {
   width: 100%;
   height: 20vh;
 }
+.nav-part1{
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 3vw;
+  width: 30%;
+}
+.hero-title{
+  margin-left: 35%;
+}
 .nav-icon {
   width: 3vw;
   height: 3vw;
@@ -329,7 +339,6 @@ nav {
   pointer-events: none;
   opacity: 0;
 }
-/* Section1 ended */
 
 .video-container {
   width: 70vw;
@@ -370,23 +379,23 @@ nav {
   object-fit: cover;
   opacity: 0;
 }
-/* Section2 ended */
+/* Section1 ended */
 
 /* Section3 Start */
 
-#section3 {
+#section2 {
   width: 100%;
   min-height: 100vh;
   background-color: #151515;
   position: relative;
 }
-#section3 h1 {
+#section2 h1 {
   font-size: 7vw;
   text-transform: uppercase;
   position: relative;
   margin-left: 30%;
 }
-#section3 h1::before {
+#section2 h1::before {
   content: "02";
   font-size: 3.3vw;
   font-family: silk-serif;
@@ -395,7 +404,11 @@ nav {
   top: 10%;
   left: -13%;
 }
-#section3 .underline {
+.sec2-title{
+  overflow: hidden;
+  background: red;
+}
+#section2 .underline {
   width: 65%;
   height: 1px;
   background: white;
@@ -535,7 +548,7 @@ nav {
   max-height: 200px;
   height: 10vw;
   border: none;
-  background: #ff7e14;
+  background: #FFA63D;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -563,26 +576,26 @@ nav {
   z-index: 99999 !important;
   pointer-events: none;
 }
-/* Section3 End */
+/* section2 End */
 
-/* Section4 Start */
-#section4 {
+/* section3 Start */
+#section3 {
   width: 100%;
   min-height: 100vh;
   background-color: #151515;
   position: relative;
   padding: 5vh 5vw;
 }
-.section4-content {
+.section3-content {
   width: 72vw;
   margin-left: 28%;
 }
-.section4-content h1 {
+.section3-content h1 {
   font-size: 7vw;
   text-transform: uppercase;
   position: relative;
 }
-.section4-content h1::before {
+.section3-content::before {
   content: "03";
   font-size: 3.3vw;
   font-family: silk-serif;
@@ -591,13 +604,16 @@ nav {
   top: 10%;
   left: -13%;
 }
-.section4-content .underline {
+.sec3-title{
+  /* overflow: hidden; */
+}
+.section3-content .underline {
   width: 90%;
   height: 1px;
   background: white;
   margin: 5vh 0;
 }
-.section4-content > p {
+.section3-content > p {
   font-size: 2.4vw;
   font-family: Manrope;
   font-weight: 400;
@@ -606,25 +622,25 @@ nav {
   /* letter-spacing: -1px; */
   margin-bottom: 5vmax;
 }
-.section4-content h5 {
+.section3-content h5 {
   font-weight: normal;
   font-size: 3vmax;
 }
-.section4-flex {
+.section3-flex {
   display: flex;
   align-items: start;
   justify-content: start;
 }
-.section4-flex img {
+.section3-flex img {
   width: 50%;
   height: 100%;
   margin-right: 2.5vw;
 }
-.section4-flex p {
+.section3-flex p {
   font-size: 1.2vw;
   width: 25%;
 }
-.section4-bluediv {
+.section3-bluediv {
   width: 45vw;
   min-height: 60vh;
   background: #3f7df4;
@@ -649,11 +665,11 @@ nav {
   width: 60%;
 }
 
-/* Section4 ended */
+/* section3 ended */
 
-/* Section5 Start */
+/* section4 Start */
 
-.section5 {
+.section4 {
   width: 100%;
   min-height: 100vh;
   background: #151515;
@@ -699,7 +715,7 @@ nav {
     transform: translateX(calc(-100% - 14px));
   }
 }
-/* Section5 End */
+/* section4 End */
 
 /* Footer Start */
 
@@ -715,14 +731,22 @@ Footer {
   flex-direction: column;
 }
 .footer h1 {
+  font-family: Plain;
   font-size: 7.5vw;
+  font-weight: normal;
   text-transform: uppercase;
   /* background: red; */
   width: 60vw;
   color: #fff;
   position: relative;
+  line-height: 1;
 }
-.footer h1::before {
+.footer-title{
+  position: relative;
+  /* background: red; */
+  padding: .3vw;
+}
+.footer-title::before {
   content: "04";
   font-size: 3.3vw;
   font-family: silk-serif;
@@ -731,6 +755,7 @@ Footer {
   top: 10%;
   left: -13%;
 }
+/*  */
 .footer > h2 {
   font-weight: normal;
   font-size: 1.1vw;
@@ -743,7 +768,7 @@ Footer {
 }
 .footer-div {
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-between;
   padding-right: 10vw;
   gap: 5vw;
@@ -752,15 +777,15 @@ Footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 78%;
+  width: 83%;
 }
-.footer-title > svg {
+.footer-title > .foot-arrow {
   width: 10%;
   transform: rotate(-90deg);
 }
 .box {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;
 }
 .box h6 {

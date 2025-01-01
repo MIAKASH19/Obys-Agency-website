@@ -122,7 +122,7 @@ function loaderAnimation() {
     "a"
   );
 }
-loaderAnimation();
+// loaderAnimation();
 
 //Cursor Animation Start
 function cursorAnimation() {
@@ -141,7 +141,7 @@ function cursorAnimation() {
     duration: 1,
   });
 
-  let hero3 = document.querySelector("#hero3")
+  let hero3 = document.querySelector("#hero3");
 
   hero3.addEventListener("mousemove", function (event) {
     const hero3Bound = hero3.getBoundingClientRect();
@@ -201,19 +201,19 @@ function cursorAnimation() {
       video.play();
       video.style.opacity = 1;
       img.style.opacity = 0;
-      secCursor.innerHTML= `<i class="ri-pause-large-fill"></i>`
+      secCursor.innerHTML = `<i class="ri-pause-large-fill"></i>`;
       gsap.to(secCursor, {
-        scale: 0.6
-      })
+        scale: 0.6,
+      });
       videoPlaying = true;
     } else {
       video.pause();
       video.style.opacity = 0;
       img.style.opacity = 1;
-      secCursor.innerHTML= `<i class="ri-play-large-fill"></i>`
+      secCursor.innerHTML = `<i class="ri-play-large-fill"></i>`;
       gsap.to(secCursor, {
-        scale: 1
-      })
+        scale: 1,
+      });
       videoPlaying = false;
     }
   });
@@ -318,6 +318,107 @@ function magnetAnimation() {
 }
 magnetAnimation();
 
+// Text Animation
+function TextAnimation() {
+  let footerTitle = document.querySelector(".footer-title");
+  let fadeText = document.querySelector("#fade-text");
 
+  footerTitle.addEventListener("mouseenter", function () {
+    // if need a fadeIn animation in textillate js then uncomment these codes
+    // $(fadeText).textillate('in');
+    // gsap.to(fadeText, {
+    //   onStart: function () {
+    //     fadeText.style.fontFamily = "silk-serif"
+    //     $(fadeText).textillate({ in: { effect: 'fadeIn', reverse: false, delay: 30 } });
+    //   }
+    // });
+    gsap.to(fadeText, {
+      duration: 0.1,
+      fontFamily: "silk-serif",
+      webkitTextStroke: "1px #fff",
+      fontWeight: 100,
+      color: "transparent",
+    });
+    gsap.to(".foot-arrow", {
+      x: 50,
+      // delay: 0.5,
+      duration: 0.3,
+      ease: "power4.Out",
+    });
+  });
 
+  footerTitle.addEventListener("mouseleave", function () {
+    console.log("Hovered left");
 
+    // if need a fadeIn animation in textillate js then uncomment these codes
+
+    // $(fadeText).textillate('in');
+
+    // gsap.to(fadeText, {
+    //   onStart: function () {
+    //     $(fadeText).textillate({ in: { effect: 'fadeIn' } });
+    //   }
+    // });
+
+    gsap.to(fadeText, {
+      fontFamily: "Plain",
+      fontWeight: 100,
+      color: "white",
+      duration: 0.3,
+      webkitTextStroke: "none",
+    });
+    gsap.to(".foot-arrow", {
+      x: 0,
+      duration: 0.1,
+    });
+  });
+}
+TextAnimation();
+
+// Scroll Animation
+
+function scrollAnimation(){
+
+gsap.from("#sec2-title-h1", {
+  y: 100, // Starting offset along the y-axis
+  opacity: 0, // Initial opacity
+  duration: 1, // Duration of the animation
+  scrollTrigger: {
+    trigger: "#section2", 
+    scroller: "main", 
+    start: "top 70%", 
+    end: "top 40%", 
+    scrub: 1,
+    // markers: true, 
+  },
+});
+gsap.from("#sec3-title-h1", {
+  y: 100, // Starting offset along the y-axis
+  opacity: 0, // Initial opacity
+  duration: 1, // Duration of the animation
+  scrollTrigger: {
+    trigger: "#section3", 
+    scroller: "main", 
+    start: "top 70%", 
+    end: "top 40%", 
+    scrub: 1,
+    markers: true, 
+  },
+});
+gsap.from(".unline1", {
+  width: 0, // Starting offset along the y-axis
+  opacity: 0, // Initial opacity
+  duration: 1, // Duration of the animation
+  scrollTrigger: {
+    trigger: "#section2", 
+    scroller: "main", 
+    start: "top 70%", 
+    end: "top 40%", 
+    scrub: 1,
+    // markers: true, // Debugging markers
+  },
+});
+
+}
+
+scrollAnimation()
