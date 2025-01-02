@@ -261,6 +261,151 @@ function sheryAnimation() {
 }
 // sheryAnimation();
 
+// Scroll Animation
+function scrollAnimation() {
+  const animations = [
+    { selector: "#sec2-title-h1", trigger: "#section2", y: 100 },
+    { selector: "#sec3-title-h1", trigger: "#section3", y: 100 },
+    { selector: ".footer-title", trigger: ".footer" },
+    { selector: ".unline1", trigger: "#section2", width: 0 },
+    { selector: ".unline2", trigger: "#section3", width: 0 },
+    { selector: ".unline3", trigger: ".unline3", width: 0 },
+    {
+      selector: ".unline4",
+      trigger: ".unline4",
+      width: 0,
+      start: "top 50%",
+      end: "top 35%",
+    },
+    {
+      selector: ".unline5",
+      trigger: ".unline4",
+      width: 0,
+      start: "top 50%",
+      end: "top 35%",
+    },
+  ];
+
+  animations.forEach(
+    ({
+      selector,
+      trigger,
+      y = 0,
+      width,
+      start = "top 70%",
+      end = "top 40%",
+    }) => {
+      gsap.from(selector, {
+        y,
+        width,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power4.Out",
+        scrollTrigger: {
+          trigger,
+          scroller: "main",
+          start,
+          end,
+        },
+      });
+    }
+  );
+}
+scrollAnimation();
+
+// Animate Paragraph
+function animateParagraph() {
+  const split = new SplitType(".split-para", { types: "lines" });
+
+  gsap.from(split.lines, {
+    y: 50,
+    opacity: 0,
+    duration: 1,
+    stagger: 0.05,
+    scrollTrigger: {
+      trigger: "#section3",
+      scroller: "main",
+      start: "top 20%",
+      end: "top 0%",
+      // scrub: 1,
+      // markers: true,
+    },
+  });
+
+  document.querySelectorAll(".split-para div").forEach((line) => {
+    line.style.fontFamily = "inherit";
+    line.style.display = "block";
+    line.style.whiteSpace = "pre";
+  });
+}
+animateParagraph();
+
+// Text Animation
+function TextAnimation() {
+  let fadeText = document.querySelector("#fade-text");
+  let FooterTitle = document.querySelector(".footer-title");
+
+  const split = new SplitType("#fade-text", { types: "chars" });
+  FooterTitle.addEventListener("mouseenter", function () {
+    gsap.fromTo(
+      split.chars,
+      {
+        opacity: 0, // Starting offset
+      },
+      {
+        opacity: 1, // Final opacity
+        y: 0, // Final position
+        duration: 1, // Animation duration
+        stagger: 0.05, // Delay between characters
+        onStart: () => {
+          // Change the font-family dynamically
+          gsap.set(split.chars, {
+            fontFamily: "silk-serif",
+            WebkitTextStroke: "1px #fff",
+            color: "transparent",
+            fontWeight: 100,
+          });
+        },
+      }
+    );
+    gsap.to(".foot-arrow", {
+      x: 50,
+      // delay: 0.5,
+      duration: 0.3,
+      ease: "power4.Out",
+    });
+    console.log("Hovered");
+  });
+  FooterTitle.addEventListener("mouseleave", function () {
+    gsap.fromTo(
+      split.chars,
+      {
+        opacity: 0, // Current state
+      },
+      {
+        opacity: 1, // Reverse the y position (optional)
+        duration: 1, // Animation duration
+        stagger: 0.05, // Delay between characters
+        onStart: () => {
+          // Reset webkit text stroke and font-family
+          gsap.set(split.chars, {
+            webkitTextStroke: "0px #000", // Reset stroke
+            color: "inherit", // Reset color
+            fontFamily: "DM", // Original font-family
+            fontWeight: 900,
+          });
+        },
+      }
+    );
+    gsap.to(".foot-arrow", {
+      x: 0,
+      duration: 0.1,
+    });
+    console.log("Mouse left");
+  });
+}
+TextAnimation();
+
 // Magnet Effect
 function magnetAnimation() {
   const magneto = document.querySelector(".magneto");
@@ -317,108 +462,3 @@ function magnetAnimation() {
   magneto.addEventListener("mouseleave", removeMagneto);
 }
 magnetAnimation();
-
-// Text Animation
-function TextAnimation() {
-  let footerTitle = document.querySelector(".footer-title");
-  let fadeText = document.querySelector("#fade-text");
-
-  footerTitle.addEventListener("mouseenter", function () {
-    // if need a fadeIn animation in textillate js then uncomment these codes
-    // $(fadeText).textillate('in');
-    // gsap.to(fadeText, {
-    //   onStart: function () {
-    //     fadeText.style.fontFamily = "silk-serif"
-    //     $(fadeText).textillate({ in: { effect: 'fadeIn', reverse: false, delay: 30 } });
-    //   }
-    // });
-    gsap.to(fadeText, {
-      duration: 0.1,
-      fontFamily: "silk-serif",
-      webkitTextStroke: "1px #fff",
-      fontWeight: 100,
-      color: "transparent",
-    });
-    gsap.to(".foot-arrow", {
-      x: 50,
-      // delay: 0.5,
-      duration: 0.3,
-      ease: "power4.Out",
-    });
-  });
-
-  footerTitle.addEventListener("mouseleave", function () {
-    console.log("Hovered left");
-
-    // if need a fadeIn animation in textillate js then uncomment these codes
-
-    // $(fadeText).textillate('in');
-
-    // gsap.to(fadeText, {
-    //   onStart: function () {
-    //     $(fadeText).textillate({ in: { effect: 'fadeIn' } });
-    //   }
-    // });
-
-    gsap.to(fadeText, {
-      fontFamily: "Plain",
-      fontWeight: 100,
-      color: "white",
-      duration: 0.3,
-      webkitTextStroke: "none",
-    });
-    gsap.to(".foot-arrow", {
-      x: 0,
-      duration: 0.1,
-    });
-  });
-}
-TextAnimation();
-
-// Scroll Animation
-
-function scrollAnimation(){
-
-gsap.from("#sec2-title-h1", {
-  y: 100, // Starting offset along the y-axis
-  opacity: 0, // Initial opacity
-  duration: 1, // Duration of the animation
-  scrollTrigger: {
-    trigger: "#section2", 
-    scroller: "main", 
-    start: "top 70%", 
-    end: "top 40%", 
-    scrub: 1,
-    // markers: true, 
-  },
-});
-gsap.from("#sec3-title-h1", {
-  y: 100, // Starting offset along the y-axis
-  opacity: 0, // Initial opacity
-  duration: 1, // Duration of the animation
-  scrollTrigger: {
-    trigger: "#section3", 
-    scroller: "main", 
-    start: "top 70%", 
-    end: "top 40%", 
-    scrub: 1,
-    markers: true, 
-  },
-});
-gsap.from(".unline1", {
-  width: 0, // Starting offset along the y-axis
-  opacity: 0, // Initial opacity
-  duration: 1, // Duration of the animation
-  scrollTrigger: {
-    trigger: "#section2", 
-    scroller: "main", 
-    start: "top 70%", 
-    end: "top 40%", 
-    scrub: 1,
-    // markers: true, // Debugging markers
-  },
-});
-
-}
-
-scrollAnimation()
