@@ -340,10 +340,126 @@ function animateParagraph() {
 }
 animateParagraph();
 
+// Magnet Effect
+function magnetAnimation() {
+  const magneto = document.querySelector(".magneto");
+
+  const magnetoText = document.querySelector("#magnet-text");
+
+  // const dbgr = document.querySelector(".dbgr")
+
+  //mouse move stuff
+
+  const activateMagneto = (event) => {
+    let boundBox = magneto.getBoundingClientRect();
+    let magnetoStr = 70;
+    let magnetoTextStr = 100;
+    const newX = (event.clientX - boundBox.left) / magneto.offsetWidth - 0.5;
+    const newY = (event.clientY - boundBox.top) / magneto.offsetHeight - 0.5;
+
+    //this helps for debugging
+    // dbgr.innerHTML = "cursorX:" + event.clientX + "<br>boxleft: " + Math.ceil(boundBox.left) + "<br>cursorInsideButton: " + Math.ceil(event.clientX - boundBox.left) + "<br>realtiveToTotalwidth: " + ((event.clientX - boundBox.left)/magneto.offsetWidth).toFixed(2) + "<br>shifted: " + ((event.clientX - boundBox.left)/magneto.offsetWidth - 0.5).toFixed(2)
+
+    gsap.to(magneto, {
+      duration: 1,
+      x: newX * magnetoStr,
+      y: newY * magnetoStr,
+      ease: Power4.easeOut,
+    });
+
+    gsap.to(magnetoText, {
+      duration: 0.5,
+      x: newX * magnetoTextStr,
+      y: newY * magnetoTextStr,
+      ease: Power4.easeOut,
+    });
+  };
+
+  //mouse leave stuff
+  const removeMagneto = (event) => {
+    gsap.to(magneto, {
+      duration: 1,
+      x: 0,
+      y: 0,
+      ease: Elastic.easeOut,
+    });
+
+    gsap.to(magnetoText, {
+      duration: 1,
+      x: 0,
+      y: 0,
+      ease: Elastic.easeOut,
+    });
+  };
+
+  magneto.addEventListener("mousemove", activateMagneto);
+  magneto.addEventListener("mouseleave", removeMagneto);
+}
+magnetAnimation();
+
 // Text Animation
 function TextAnimation() {
   let fadeText = document.querySelector("#fade-text");
   let FooterTitle = document.querySelector(".footer-title");
+
+  function TextAnimation() {
+    const pageLinks = document.querySelectorAll(".page-links a");
+
+    pageLinks.forEach((link) => {
+      const split = new SplitType(link, { types: "chars" });
+
+      link.addEventListener("mouseenter", function () {
+        gsap.fromTo(
+          split.chars,
+          {
+            opacity: 0, // Starting opacity
+          },
+          {
+            opacity: 1, // Final opacity
+            y: 0, // Final position
+            duration: 1, // Animation duration
+            stagger: 0.1, // Delay between characters
+            onStart: () => {
+              // Change the font-family dynamically
+              gsap.set(split.chars, {
+                fontFamily: "silk-serif",
+                WebkitTextStroke: "1px #fff",
+                color: "transparent",
+                fontWeight: 100,
+              });
+            },
+          }
+        );
+        console.log("Hovered on:", link.textContent);
+      });
+
+      link.addEventListener("mouseleave", function () {
+        gsap.fromTo(
+          split.chars,
+          {
+            opacity: 0, // Current state
+          },
+          {
+            opacity: 1, // Reverse the y position (optional)
+            duration: 1, // Animation duration
+            stagger: 0.1, // Delay between characters
+            onStart: () => {
+              // Reset webkit text stroke and font-family
+              gsap.set(split.chars, {
+                webkitTextStroke: "0px #000", // Reset stroke
+                color: "inherit", // Reset color
+                fontFamily: "DM", // Original font-family
+                fontWeight: 900,
+              });
+            },
+          }
+        );
+        console.log("Mouse left:", link.textContent);
+      });
+    });
+  }
+
+  TextAnimation();
 
   const split = new SplitType("#fade-text", { types: "chars" });
   FooterTitle.addEventListener("mouseenter", function () {
@@ -406,59 +522,130 @@ function TextAnimation() {
 }
 TextAnimation();
 
-// Magnet Effect
-function magnetAnimation() {
-  const magneto = document.querySelector(".magneto");
+function toggleNavMenu({
+  navIconSelector = ".nav-icon",
+  linksSelector = ".link a",
+  navPart2Selector = ".nav-part2",
+  dropMenuSelector = ".drop-menu",
+  pageLinksDivSelector = ".page-links-div",
+}) {
+  const navIcon = document.querySelector(navIconSelector);
+  const links = document.querySelectorAll(linksSelector);
+  const navPart2 = document.querySelector(navPart2Selector);
+  const dropMenu = document.querySelector(dropMenuSelector);
+  const pageLinksDiv = document.querySelector(pageLinksDivSelector);
 
-  const magnetoText = document.querySelector("#magnet-text");
+  let toggle = false;
 
-  // const dbgr = document.querySelector(".dbgr")
+  navIcon.addEventListener("click", function () {
+    const tl = gsap.timeline();
 
-  //mouse move stuff
+    if (!toggle) {
+      // Open menu
+      tl.to(navPart2, {
+        display: "none",
+        opacity: 0,
+        duration: 0.3,
+        ease: "circ.out",
+      });
+      tl.fromTo(
+        dropMenu,
+        { y: "-100%" },
+        {
+          y: "0%",
+          duration: 0.6,
+          ease: "circ.out",
+        }
+      );
+      tl.fromTo(
+        links,
+        { y: "-100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: 0.3,
+          ease: "circ.out",
+          stagger: 0.1,
+        }
+      );
+      tl.fromTo(
+        pageLinksDiv,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          duration: 0.3,
+          ease: "circ.out",
+        }
+      );
 
-  const activateMagneto = (event) => {
-    let boundBox = magneto.getBoundingClientRect();
-    let magnetoStr = 70;
-    let magnetoTextStr = 100;
-    const newX = (event.clientX - boundBox.left) / magneto.offsetWidth - 0.5;
-    const newY = (event.clientY - boundBox.top) / magneto.offsetHeight - 0.5;
+      highlightActiveLink(links); // Call the highlight function
 
-    //this helps for debugging
-    // dbgr.innerHTML = "cursorX:" + event.clientX + "<br>boxleft: " + Math.ceil(boundBox.left) + "<br>cursorInsideButton: " + Math.ceil(event.clientX - boundBox.left) + "<br>realtiveToTotalwidth: " + ((event.clientX - boundBox.left)/magneto.offsetWidth).toFixed(2) + "<br>shifted: " + ((event.clientX - boundBox.left)/magneto.offsetWidth - 0.5).toFixed(2)
+      toggle = true;
+    } else {
+      // Close menu
+      tl.fromTo(
+        links,
+        { y: "0%", opacity: 1 },
+        {
+          y: "-100%",
+          opacity: 0,
+          duration: 0.3,
+          ease: "expoScale(0.5, 7, none)",
+          stagger: 0.1,
+        },
+        "anim"
+      );
+      tl.fromTo(
+        pageLinksDiv,
+        { opacity: 1 },
+        {
+          opacity: 0,
+          duration: 0.3,
+          ease: "expoScale(0.5, 7, none)",
+        },
+        "anim"
+      );
+      tl.fromTo(
+        dropMenu,
+        { y: "0%" },
+        {
+          y: "-100%",
+          duration: 0.6,
+          delay: 0.3,
+          ease: "circ.out",
+        }
+      );
+      tl.to(navPart2, {
+        display: "flex",
+        opacity: 1,
+        duration: 0.3,
+        ease: "expoScale(0.5, 7, none)",
+      });
 
-    gsap.to(magneto, {
-      duration: 1,
-      x: newX * magnetoStr,
-      y: newY * magnetoStr,
-      ease: Power4.easeOut,
-    });
-
-    gsap.to(magnetoText, {
-      duration: 0.5,
-      x: newX * magnetoTextStr,
-      y: newY * magnetoTextStr,
-      ease: Power4.easeOut,
-    });
-  };
-
-  //mouse leave stuff
-  const removeMagneto = (event) => {
-    gsap.to(magneto, {
-      duration: 1,
-      x: 0,
-      y: 0,
-      ease: Elastic.easeOut,
-    });
-
-    gsap.to(magnetoText, {
-      duration: 1,
-      x: 0,
-      y: 0,
-      ease: Elastic.easeOut,
-    });
-  };
-
-  magneto.addEventListener("mousemove", activateMagneto);
-  magneto.addEventListener("mouseleave", removeMagneto);
+      toggle = false;
+    }
+  });
 }
-magnetAnimation();
+
+function highlightActiveLink(links) {
+  const currentPage = window.location.pathname;
+
+  // Handle the case for home page (index.html or /)
+  let path =
+    currentPage === "/" || currentPage === "/index.html"
+      ? "/home"
+      : currentPage;
+
+  links.forEach((link) => {
+    const linkPath = link.getAttribute("href");
+    if (linkPath === path) {
+      link.classList.add("active"); // Add the 'active' class to the current link // Optionally animate the active link
+    } else {
+      link.classList.remove("active"); // Remove 'active' class from other links
+    }
+  });
+}
+
+
+
+toggleNavMenu({});
