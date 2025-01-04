@@ -274,14 +274,14 @@ function scrollAnimation() {
       selector: ".unline4",
       trigger: ".unline4",
       width: 0,
-      start: "top 50%",
+      start: "top 80%",
       end: "top 35%",
     },
     {
       selector: ".unline5",
       trigger: ".unline4",
       width: 0,
-      start: "top 50%",
+      start: "top 80%",
       end: "top 35%",
     },
   ];
@@ -399,82 +399,21 @@ magnetAnimation();
 
 // Text Animation
 function TextAnimation() {
-  let fadeText = document.querySelector("#fade-text");
   let FooterTitle = document.querySelector(".footer-title");
-
-  function TextAnimation() {
-    const pageLinks = document.querySelectorAll(".page-links a");
-
-    pageLinks.forEach((link) => {
-      const split = new SplitType(link, { types: "chars" });
-
-      link.addEventListener("mouseenter", function () {
-        gsap.fromTo(
-          split.chars,
-          {
-            opacity: 0, // Starting opacity
-          },
-          {
-            opacity: 1, // Final opacity
-            y: 0, // Final position
-            duration: 1, // Animation duration
-            stagger: 0.1, // Delay between characters
-            onStart: () => {
-              // Change the font-family dynamically
-              gsap.set(split.chars, {
-                fontFamily: "silk-serif",
-                WebkitTextStroke: "1px #fff",
-                color: "transparent",
-                fontWeight: 100,
-              });
-            },
-          }
-        );
-        console.log("Hovered on:", link.textContent);
-      });
-
-      link.addEventListener("mouseleave", function () {
-        gsap.fromTo(
-          split.chars,
-          {
-            opacity: 0, // Current state
-          },
-          {
-            opacity: 1, // Reverse the y position (optional)
-            duration: 1, // Animation duration
-            stagger: 0.1, // Delay between characters
-            onStart: () => {
-              // Reset webkit text stroke and font-family
-              gsap.set(split.chars, {
-                webkitTextStroke: "0px #000", // Reset stroke
-                color: "inherit", // Reset color
-                fontFamily: "DM", // Original font-family
-                fontWeight: 900,
-              });
-            },
-          }
-        );
-        console.log("Mouse left:", link.textContent);
-      });
-    });
-  }
-
-  TextAnimation();
 
   const split = new SplitType("#fade-text", { types: "chars" });
   FooterTitle.addEventListener("mouseenter", function () {
     gsap.fromTo(
       split.chars,
       {
-        opacity: 0, // Starting offset
+        opacity: 0, 
       },
       {
-        opacity: 1, // Final opacity
-        y: 0, // Final position
-        duration: 1, // Animation duration
-        stagger: 0.05, // Delay between characters
+        opacity: 1,
+        y: 0, 
+        duration: 1, 
+        stagger: 0.05, 
         onStart: () => {
-          // Change the font-family dynamically
           gsap.set(split.chars, {
             fontFamily: "silk-serif",
             WebkitTextStroke: "1px #fff",
@@ -486,7 +425,6 @@ function TextAnimation() {
     );
     gsap.to(".foot-arrow", {
       x: 50,
-      // delay: 0.5,
       duration: 0.3,
       ease: "power4.Out",
     });
@@ -496,18 +434,17 @@ function TextAnimation() {
     gsap.fromTo(
       split.chars,
       {
-        opacity: 0, // Current state
+        opacity: 0, 
       },
       {
-        opacity: 1, // Reverse the y position (optional)
-        duration: 1, // Animation duration
-        stagger: 0.05, // Delay between characters
+        opacity: 1, 
+        duration: 1, 
+        stagger: 0.05, 
         onStart: () => {
-          // Reset webkit text stroke and font-family
           gsap.set(split.chars, {
-            webkitTextStroke: "0px #000", // Reset stroke
-            color: "inherit", // Reset color
-            fontFamily: "DM", // Original font-family
+            webkitTextStroke: "0px #000", 
+            color: "inherit", 
+            fontFamily: "DM", 
             fontWeight: 900,
           });
         },
@@ -522,6 +459,62 @@ function TextAnimation() {
 }
 TextAnimation();
 
+// Menu TextAnimation
+function MenuTextAnimation() {
+  const pageLinks = document.querySelectorAll(".page-links a");
+
+  pageLinks.forEach((link) => {
+    const split = new SplitType(link, { types: "chars" });
+    link.addEventListener("mouseenter", function () {
+      gsap.fromTo(
+        split.chars,
+        {
+          opacity: 0, // Starting opacity
+        },
+        {
+          opacity: 1, // Final opacity
+          y: 0, // Final position
+          duration: 1, // Animation duration
+          stagger: 0.1, // Delay between characters
+          onStart: () => {
+            // Apply animation styles only if not active
+            gsap.set(split.chars, {
+              fontFamily: "silk-serif",
+              WebkitTextStroke: "1px #fff",
+              color: "transparent",
+              fontWeight: 100,
+            });
+          },
+        }
+      );
+    });
+    link.addEventListener("mouseleave", function () {
+      gsap.fromTo(
+        split.chars,
+        {
+          opacity: 0, // Current state
+        },
+        {
+          opacity: 1, // Reverse the y position (optional)
+          duration: 1, // Animation duration
+          stagger: 0.1, // Delay between characters
+          onStart: () => {
+            // Reset webkit text stroke and font-family only if not active
+            gsap.set(split.chars, {
+              WebkitTextStroke: "0px #000", // Reset stroke
+              fontFamily: "DM", // Original font-family
+              color: "inherit", // Reset color
+              fontWeight: 900,
+            });
+          },
+        }
+      );
+    });
+  });
+}
+MenuTextAnimation();
+
+// Toggle Menu Animation
 function toggleNavMenu({
   navIconSelector = ".nav-icon",
   linksSelector = ".link a",
@@ -535,9 +528,11 @@ function toggleNavMenu({
   const dropMenu = document.querySelector(dropMenuSelector);
   const pageLinksDiv = document.querySelector(pageLinksDivSelector);
 
+
   let toggle = false;
 
   navIcon.addEventListener("click", function () {
+    
     const tl = gsap.timeline();
 
     if (!toggle) {
@@ -578,7 +573,7 @@ function toggleNavMenu({
         }
       );
 
-      highlightActiveLink(links); // Call the highlight function
+       // Call the highlight function
 
       toggle = true;
     } else {
@@ -595,6 +590,7 @@ function toggleNavMenu({
         },
         "anim"
       );
+      
       tl.fromTo(
         pageLinksDiv,
         { opacity: 1 },
@@ -626,26 +622,5 @@ function toggleNavMenu({
     }
   });
 }
-
-function highlightActiveLink(links) {
-  const currentPage = window.location.pathname;
-
-  // Handle the case for home page (index.html or /)
-  let path =
-    currentPage === "/" || currentPage === "/index.html"
-      ? "/home"
-      : currentPage;
-
-  links.forEach((link) => {
-    const linkPath = link.getAttribute("href");
-    if (linkPath === path) {
-      link.classList.add("active"); // Add the 'active' class to the current link // Optionally animate the active link
-    } else {
-      link.classList.remove("active"); // Remove 'active' class from other links
-    }
-  });
-}
-
-
-
 toggleNavMenu({});
+
