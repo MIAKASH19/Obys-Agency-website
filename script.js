@@ -122,7 +122,7 @@ function loaderAnimation() {
     "a"
   );
 }
-// loaderAnimation();
+loaderAnimation();
 
 //Cursor Animation Start
 function cursorAnimation() {

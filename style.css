@@ -384,7 +384,7 @@ nav {
   -webkit-text-stroke: 0px white;
 }
 #flag{
-  height: 25vw;
+  height: 32vw;
   position: absolute;
   top: 0;
   left: 0;
@@ -891,8 +891,64 @@ Footer {
   .cursor {
     display: none;
   }
+  #loader {
+    z-index: 100;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .line:nth-child(1){
+    flex-direction: column;
+    /* gap: -10vw; */
+  }
+  .line1-part1 {
+    display: flex;
+    gap: 1.5vmax;
+  }
+  .line1-part1 h5,
+  .line1-part1 h6 {
+    font-size: 3vh;
+  }
+  .line h1,
+  .line h2 {
+    font-size: 4.7vh;
+  }
+  .line h2 {
+    animation: beatanim infinite 2s 2s;
+    padding-right: 2vw;
+  }
+  
+  .loader-text {
+    margin-left: 0;
+  }
+  
+  .drop-menu{
+    align-items: start;
+    flex-direction: column;
+    justify-content: end;
+    z-index: 100;
+  }
+  .page-links a{
+    font-size: 7.5vh;
+  }
+  
+  .page-links-div{
+    height: 43%;
+    display: flex;
+    align-items: start;
+    justify-content: end;
+    padding: 15vw 3vw;
+  }
+  .page-links-div .box:nth-child(1){
+    display: none;
+  }
+  .page-links-div .box:nth-child(2){
+    display: none;
+  }
   nav{
     height: 15vw;
+    z-index: 100;
   }
   .nav-part1{
     width: 100%;
@@ -1063,18 +1119,13 @@ Footer {
 .mask-div {
   display: none;
 }
-
-
-
 .magneto {
   min-width: 25vmax;
   min-height: 25vmax;
 }
-
 .magneto h3 {
   font-size: 2.5vmax;
 }
-
 .button__arrow {
   width: 30%;
 }
@@ -1184,19 +1235,20 @@ Footer {
 
 .section4 {
   min-height: 40vh;
+  padding-bottom: 10vh;
 }
 /* section4 End */
 
 /* Footer Start */
 
 Footer {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   /* background: #151515; */
   /* background: red; */
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   flex-direction: column;
   padding: 10vh 3vh;
@@ -1208,6 +1260,7 @@ Footer {
 }
 .footer-title{
   width: 100%;
+  padding-bottom: 2vh;
 }
 .footer-title::before {
   content: "04";
@@ -1223,20 +1276,24 @@ Footer {
   font-weight: normal;
   font-size: 2.5vmax;
 }
-.underline {
-  width: 90%;
-  height: 10px;
+.footer .unline4 {
   background: #fff;
   margin: 2vh 0;
-  z-index: 99;
+  min-height: 1px; 
+  width: 100%; 
+}
+.unline5{
+  width: 100%;
+  min-height: 1px ;
+  background: #fff;
+  margin: 2vh 0;
 }
 .footer-div {
   display: flex;
   align-items: start;
   flex-direction: column;
   justify-content: space-between;
-  /* padding-right: 1vw; */
-  gap: 10vh;
+  gap: 8vh;
   height: 100vh;
 }
 
@@ -1251,35 +1308,20 @@ Footer {
 }
 .box h6 {
   font-size: 2vmax;
-  font-weight: 100;
   padding-bottom: 1.3vw;
 }
 .box h5 {
   font-size: 3.5vmax;
-  font-weight: 100;
   line-height: 1.2;
 }
 .box h2 {
   font-size: 3.5vmax;
-  font-weight: 100;
-  line-height: 1;
-  text-decoration: underline;
 }
 .box a {
-  text-decoration: none;
   font-size: 4vmax;
-  line-height: 1.5;
-  font-family: Manrope;
-  transition: all 0.4s ease-in-out;
 }
 .social-links {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  /* background: red; */
-  flex-direction: column;
   height: 8vw;
-  overflow: hidden;
 }
 .social-links:hover a {
   transform: translateY(-100%);
