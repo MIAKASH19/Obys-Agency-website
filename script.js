@@ -259,7 +259,7 @@ function sheryAnimation() {
     gooey: true,
   });
 }
-// sheryAnimation();
+sheryAnimation();
 
 // Scroll Animation
 function scrollAnimation() {
