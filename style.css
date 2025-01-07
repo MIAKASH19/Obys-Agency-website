@@ -890,6 +890,7 @@ Footer {
 @media (max-width: 768px) {
   .cursor {
     display: none;
+    opacity: 0;
   }
   #loader {
     z-index: 100;
@@ -947,8 +948,9 @@ Footer {
     display: none;
   }
   nav{
-    height: 15vw;
+    height: 10vw;
     z-index: 100;
+    align-items: end;
   }
   .nav-part1{
     width: 100%;
@@ -982,14 +984,14 @@ Footer {
     margin-left: -17%;
   }
   .hero-text::before {
-    background: red;
+    /* background: red; */
     content: "01";
     line-height: 1;
-    font-size: 3.3vw;
+    font-size: 3.3vh;
     font-family: silk-serif;
     position: absolute;
-    left: -12%;
-    top: 2.8%;
+    left: 1%;
+    top: -15%;
     opacity: var(--opacity, 0);
   }
   
@@ -1079,7 +1081,7 @@ Footer {
 
 .image-div {
   width: 90%;
-  height: 90vh;
+  height: 100vh;
 }
 .work-title h3 {
   font-size: 5vw;

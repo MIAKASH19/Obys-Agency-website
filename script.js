@@ -536,7 +536,6 @@ function toggleNavMenu({
     const tl = gsap.timeline();
 
     if (!toggle) {
-      // Open menu
       tl.to(navPart2, {
         display: "none",
         opacity: 0,
@@ -573,11 +572,9 @@ function toggleNavMenu({
         }
       );
 
-       // Call the highlight function
 
       toggle = true;
     } else {
-      // Close menu
       tl.fromTo(
         links,
         { y: "0%", opacity: 1 },
