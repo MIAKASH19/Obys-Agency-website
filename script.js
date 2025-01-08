@@ -122,7 +122,7 @@ function loaderAnimation() {
     "a"
   );
 }
-loaderAnimation();
+// loaderAnimation();
 
 //Cursor Animation Start
 function cursorAnimation() {
@@ -259,7 +259,7 @@ function sheryAnimation() {
     gooey: true,
   });
 }
-sheryAnimation();
+// sheryAnimation();
 
 // Scroll Animation
 function scrollAnimation() {
