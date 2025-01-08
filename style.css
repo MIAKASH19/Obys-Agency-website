@@ -1310,7 +1310,7 @@ Footer {
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: end;
-    padding: 15vw 3vw;
+    padding: 15vh 3vw;
   }
   .page-links-div .box:nth-child(1){
     display: none;
@@ -1412,7 +1412,7 @@ Footer {
   
   .video-container {
     width: 100vw;
-    height: 30vh;
+    height: 45vh;
     left: 0%;
   }
   .secnd-crsr {
@@ -1711,7 +1711,7 @@ Footer {
   padding: 10vh 3vh;
 }
 .footer-title h1 {
-  font-size: 4.6vh;
+  font-size: 5vh;
   width: 100%;
   margin-left: 10%;
 }
@@ -1743,7 +1743,7 @@ Footer {
   width: 100%;
   min-height: 1px ;
   background: #fff;
-  margin: 2vh 0;
+  margin: 5vh 0 2vh 0;
 }
 .footer-div {
   display: -webkit-box;
@@ -1782,7 +1782,7 @@ Footer {
           flex-direction: column;
 }
 .box h6 {
-  font-size: 1vmax;
+  font-size: 1.8vmax;
   padding-bottom: 1.3vw;
 }
 .box h5 {
@@ -1796,7 +1796,7 @@ Footer {
   font-size: 3vmax;
 }
 .social-links {
-  height: 8vw;
+  height: 10vw;
 }
 .social-links:hover a {
   -webkit-transform: translateY(-100%);

@@ -395,7 +395,7 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        /* align-items: center; */
+        /* align-items: center;/ */
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -529,6 +529,7 @@
       @media (max-width: 768px) {
         .cursor {
           display: none;
+          opacity: 0;
         }
         #loader {
           z-index: 100;
@@ -561,11 +562,11 @@
         }
         .line1-part1 h5,
         .line1-part1 h6 {
-          font-size: 3vh;
+          font-size: 2.3vh;
         }
         .line h1,
         .line h2 {
-          font-size: 4.7vh;
+          font-size: 3.4vh;
         }
         .line h2 {
           -webkit-animation: beatanim infinite 2s 2s;
@@ -605,7 +606,7 @@
           -webkit-box-pack: end;
           -ms-flex-pack: end;
           justify-content: end;
-          padding: 15vw 3vw;
+          padding: 15vh 3vw;
         }
         .page-links-div .box:nth-child(1) {
           display: none;
@@ -615,7 +616,11 @@
         }
         nav {
           height: 15vw;
+          padding: 3vh;
           z-index: 100;
+          -webkit-box-align: end;
+          -ms-flex-align: end;
+          align-items: end;
         }
         .nav-part1 {
           width: 100%;
@@ -626,7 +631,6 @@
         .nav-part2 {
           display: none;
         }
-
         Footer {
           width: 100vw;
           height: 100vh;
@@ -649,27 +653,18 @@
           padding: 10vh 3vh;
         }
         .footer-title h1 {
-          font-size: 7vh;
+          font-size: 5vh;
           width: 100%;
-          margin-left: 10%;
+          margin-left: 0%;
         }
         .footer-title {
           width: 100%;
           padding-bottom: 2vh;
         }
-        .footer-title::before {
-          content: "04";
-          font-size: 3vmax;
-          font-family: silk-serif;
-          font-weight: normal;
-          position: absolute;
-          top: 10%;
-          left: 0%;
-        }
         /*  */
         .footer > h2 {
           font-weight: normal;
-          font-size: 2.5vmax;
+          font-size: 1.8vmax;
         }
         .footer .unline4 {
           background: #fff;
@@ -681,7 +676,7 @@
           width: 100%;
           min-height: 1px;
           background: #fff;
-          margin: 2vh 0;
+          margin: 5vh 0 2vh 0;
         }
         .footer-div {
           display: -webkit-box;
@@ -720,21 +715,21 @@
           flex-direction: column;
         }
         .box h6 {
-          font-size: 2vmax;
+          font-size: 1.8vmax;
           padding-bottom: 1.3vw;
         }
         .box h5 {
-          font-size: 3.5vmax;
+          font-size: 3vmax;
           line-height: 1.2;
         }
         .box h2 {
-          font-size: 3.5vmax;
+          font-size: 3vmax;
         }
         .box a {
-          font-size: 4vmax;
+          font-size: 3vmax;
         }
         .social-links {
-          height: 8vw;
+          height: 10vw;
         }
         .social-links:hover a {
           -webkit-transform: translateY(-100%);
